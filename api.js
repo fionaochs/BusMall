@@ -72,12 +72,12 @@ export const productsData = [
     {
         id: 'sweep',
         name: 'sweep',
-        image: './assets/assets/sweep.jpg'
+        image: './assets/assets/sweep.png'
     },
     {
         id: 'tauntaun',
         name: 'tauntaun',
-        image: './assets/assets/tauntaun'
+        image: './assets/assets/tauntaun.jpg'
     },
     {
         id: 'unicorn',
@@ -87,12 +87,12 @@ export const productsData = [
     {
         id: 'usb',
         name: 'usb',
-        image: './assets/assets/usb'
+        image: './assets/assets/usb.gif'
     },
     {
         id: 'water-can',
         name: 'water-can',
-        image: './assets/assets/water-can'
+        image: './assets/assets/water-can.jpg'
     },
     {
         id: 'wine-glass',
