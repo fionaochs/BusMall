@@ -40,4 +40,4 @@ export class ProductsArray {
         const randomProductIndex = Math.floor(Math.random() * this.products.length);
         return this.products[randomProductIndex];
     }
-};
+}

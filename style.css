@@ -31,3 +31,7 @@ h1{
     font-family: fantasy;
     font-size: 25px;
 }
+canvas {
+    width: 75%;
+    height: 500px;
+  }
