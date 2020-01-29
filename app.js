@@ -1,8 +1,9 @@
 import { productsData } from './api.js';
 import { ProductsArray } from './productsArray.js';
 import { findById, getProducts } from './utils.js';
+// import renderResults from './render-results.js';
 
-// const newRadioTags = document.querySelector('input');
+
 const resultsDisplay = document.getElementById('results');
 const submitButton = document.getElementById('submitButton');
 const product3Input = document.getElementById('product3Input');
@@ -64,7 +65,7 @@ const makeResults = () => {
     const possibleResults = localStorage.getItem('results');
 
     if (possibleResults){ 
-        return productResults;
+        return JSON.parse(possibleResults);
     } 
     else {
         return [];
@@ -75,22 +76,25 @@ initializeNewProducts();
 
 
 function renderProductsResults(){
-    // const gottenProducts = getProducts();
     const results = makeResults();
+    console.log('initial results', results);
     const productSelected = document.querySelector('input:checked');
-    
+
     let productChoiceResults = findById(results, productSelected.value);
-    
+    console.log(productChoiceResults);
     if (!productChoiceResults){
         const selectedResultsObject = {
             id: productSelected.value,
             votes: 1
         };
         results.push(selectedResultsObject);
-    } else 
-        productChoiceResults.quantity++;
-
+    } else {
+        productChoiceResults.votes++;
+        console.log(productChoiceResults);
+    }
+ console.log(results);
     const newResultsState = JSON.stringify(results);
+    
     localStorage.setItem('results', newResultsState);
 
 }
