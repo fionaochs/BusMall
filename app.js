@@ -71,7 +71,6 @@ initializeNewProducts();
 function renderProductsResults(){
     const possibleResults = localStorage.getItem('results');
     let storageResults;
-
     if (possibleResults){ 
         
         storageResults = JSON.parse(possibleResults);
@@ -82,7 +81,7 @@ function renderProductsResults(){
 
     }
     const productSelected = document.querySelector('input:checked');
-    
+    console.log(storageResults);
     let productChoiceResults = findById(storageResults, productSelected.value);
     
     if (!productChoiceResults){
@@ -90,26 +89,26 @@ function renderProductsResults(){
             id: productSelected.value,
             votes: 1
         };
-        results.push(selectedResultsObject);
+        storageResults.push(selectedResultsObject);
     } else {
         productChoiceResults.votes++;
     }
-    const newResultsState = JSON.stringify(results);
+    const newResultsState = JSON.stringify(storageResults);
     
     localStorage.setItem('results', newResultsState);
 
 }
-const results = JSON.parse(localStorage.getItem('results'));
 
-for (let i = 0; i < results.length; i++){
-  
-    const possiblyResults = results[i];
-    const selectedGood = findById(resultProducts, possiblyResults.id);
-    const dom = renderResults(possiblyResults, selectedGood);
-    tbody.appendChild(dom);
-}
+// for (let i = 0; i < results.length; i++){
+    
+    //     const possiblyResults = results[i];
+    //     const selectedGood = findById(resultProducts, possiblyResults.id);
+    //     const dom = renderResults(possiblyResults, selectedGood);
+    //     tbody.appendChild(dom);
+    // }
     
 submitButton.addEventListener('click', () => {
+    const results = JSON.parse(localStorage.getItem('results'));
 
     renderProductsResults();
     initializeNewProducts();
@@ -118,6 +117,16 @@ submitButton.addEventListener('click', () => {
         resultsDisplay.style.visibility = 'visible';
         submitButton.disabled = 'true';
         submitButton.style.visibility = 'hidden';
+
+        for (let i = 0; i < results.length; i++){
+            const possiblyResults = results[i];
+            console.log(possiblyResults.id);
+            console.log(productsData);
+            const selectedGood = findById(productsData, possiblyResults.id);
+            console.log(selectedGood);
+            const dom = renderResults(possiblyResults, selectedGood);
+            tbody.appendChild(dom);
+        }
     }
     
 });
