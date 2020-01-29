@@ -63,8 +63,8 @@ const initializeNewProducts = () => {
 const makeResults = () => {
     const possibleResults = localStorage.getItem('results');
 
-    if (possibleResults){
-        return JSON.parse(productResults);
+    if (possibleResults){ 
+        return productResults;
     } 
     else {
         return [];
@@ -72,15 +72,15 @@ const makeResults = () => {
 };
 initializeNewProducts();
 
-const productSelected = document.querySelector('input:checked');
 
-function renderProductsResults(products){
-    const getProducts = getProducts();
+
+function renderProductsResults(){
+    // const gottenProducts = getProducts();
     const results = makeResults();
-
-    let productChoiceResults = findById(getProducts, products.id);
-    console.log(productChoiceResults);
-
+    const productSelected = document.querySelector('input:checked');
+    
+    let productChoiceResults = findById(results, productSelected.value);
+    
     if (!productChoiceResults){
         const selectedResultsObject = {
             id: productSelected.value,
@@ -97,7 +97,6 @@ function renderProductsResults(products){
 
     
 submitButton.addEventListener('click', () => {
-    console.log(document.querySelector('input:checked'));
 
     renderProductsResults();
     initializeNewProducts();

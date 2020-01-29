@@ -9,16 +9,16 @@ export function findById(productsData, someId){
     }
     return null;
 }
-export function makeResults(){
-    const possibleResults = localStorage.getItem('results');
+// export function makeResults(){
+//     const possibleResults = localStorage.getItem('results');
 
-    if (possibleResults){
-        return JSON.parse(possibleResults);
-    } 
-    else {
-        return [];
-    }
-}
+//     if (possibleResults){
+//         return JSON.parse(possibleResults);
+//     } 
+//     else {
+//         return [];
+//     }
+// }
 
 function seedProductsIntoLocalStorage(){
     const productsAlreadyExist = localStorage.getItem('products');
