@@ -1,38 +1,34 @@
-// import { getProducts } from "./utils";
-
-// function renderResults(selectedProducts, products){
-//     const tr = document.createElement('tr');
+import { getProducts, findById } from './utils.js';
 
 
-//     const nameCell = document.createElement('td');
-//     nameCell.className = 'align-center';
-//     nameCell.textContent = products.name;
-//     tr.appendChild(nameCell);
+export function renderResults(selectedProducts, products){
+    const tr = document.createElement('tr');
+    const tbody = document.querySelector('.table');
+
+    const nameCell = document.createElement('td');
+    nameCell.className = 'align-center';
+    nameCell.textContent = products.name;
+    tr.appendChild(nameCell);
     
-//     const quantityCell = document.createElement('td');
-//     quantityCell.textContent = selectedProducts.quantity;
-//     tr.appendChild(quantityCell);
+    const votesCell = document.createElement('td');
+    votesCell.textContent = selectedProducts.votes;
+    tr.appendChild(votesCell);
     
-//     return tr;
-// }
-// export default renderResults();
+    return tr;
+    tbody.appendChild(dom);
+}
 
 
-// const tbody = document.querySelector('.table');
+const products = getProducts();
 
-// const products = getProducts();
+const results = JSON.parse(localStorage.getItem('results'));
 
-// const results = makeResults();
 
-// for (let i = 0; i < results.length; i++){
-//     //loop through the baked goods array
-//     const possiblyresultsGood = results[i];
-//     //set each item in the cart to line item
-//     const selectedGood = findById(products, possiblyCartGood.id);
-   
-//     //selected good is comparing baked goods list with line items id
-//     const dom = renderBakedGoods(possiblyCartGood, selectedGood);
-//     //render info and store in dom variable, use cart[i] and the baked good
-//     tbody.appendChild(dom);
-//     //append, add the changes to the tbody in html
-// }
+
+
+for (let i = 0; i < results.length; i++){
+    const possiblyresults = results[i];
+    const selectedGood = findById(possiblyresults, possiblyResults.value);
+    const dom = renderResults(selectedProducts, selectedGood);
+    
+}

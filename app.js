@@ -10,7 +10,7 @@ const product3Input = document.getElementById('product3Input');
 
 const products = new ProductsArray(productsData);
 
-let productResults = getProducts();
+// let productResults = getProducts();
 
 let chosenProducts = 0;
 
