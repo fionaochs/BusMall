@@ -11,19 +11,19 @@ export function findById(productsData, someId){
 }
 
 function seedProductsIntoLocalStorage(){
-    const productsAlreadyExist = localStorage.getItem('products');
+    const productsAlreadyExist = localStorage.getItem('results');
 
     if (!productsAlreadyExist){
         const stringyProducts = JSON.stringify(productsData);
-        localStorage.setItem('products', stringyProducts);
+        localStorage.setItem('results', stringyProducts);
     }
 
 }
 
 export function getProducts(){
-    seedProductsIntoLocalStorage();
+    // seedProductsIntoLocalStorage();
     
-    const storedProducts = localStorage.getItem('products');
+    const storedProducts = localStorage.getItem('results');
     const parsedProducts = JSON.parse(storedProducts);
 
     return parsedProducts;

@@ -1,7 +1,8 @@
 import { productsData } from './api.js';
 import { ProductsArray } from './productsArray.js';
 import { findById, getProducts } from './utils.js';
-// import renderResults from './render-results.js';
+import { renderResults } from './render-results.js';
+
 
 
 const resultsDisplay = document.getElementById('results');
@@ -10,7 +11,10 @@ const product3Input = document.getElementById('product3Input');
 
 const products = new ProductsArray(productsData);
 
-// let productResults = getProducts();
+
+const resultProducts = getProducts();
+
+const tbody = document.querySelector('.table');
 
 let chosenProducts = 0;
 
@@ -61,27 +65,26 @@ const initializeNewProducts = () => {
 
 };
 
-const makeResults = () => {
-    const possibleResults = localStorage.getItem('results');
-
-    if (possibleResults){ 
-        return JSON.parse(possibleResults);
-    } 
-    else {
-        return [];
-    }
-};
 initializeNewProducts();
 
 
-
 function renderProductsResults(){
-    const results = makeResults();
-    console.log('initial results', results);
-    const productSelected = document.querySelector('input:checked');
+    const possibleResults = localStorage.getItem('results');
+    let storageResults;
 
-    let productChoiceResults = findById(results, productSelected.value);
-    console.log(productChoiceResults);
+    if (possibleResults){ 
+        
+        storageResults = JSON.parse(possibleResults);
+
+    } 
+    else {
+        storageResults = [];
+
+    }
+    const productSelected = document.querySelector('input:checked');
+    
+    let productChoiceResults = findById(storageResults, productSelected.value);
+    
     if (!productChoiceResults){
         const selectedResultsObject = {
             id: productSelected.value,
@@ -90,15 +93,21 @@ function renderProductsResults(){
         results.push(selectedResultsObject);
     } else {
         productChoiceResults.votes++;
-        console.log(productChoiceResults);
     }
- console.log(results);
     const newResultsState = JSON.stringify(results);
     
     localStorage.setItem('results', newResultsState);
 
 }
+const results = JSON.parse(localStorage.getItem('results'));
 
+for (let i = 0; i < results.length; i++){
+  
+    const possiblyResults = results[i];
+    const selectedGood = findById(resultProducts, possiblyResults.id);
+    const dom = renderResults(possiblyResults, selectedGood);
+    tbody.appendChild(dom);
+}
     
 submitButton.addEventListener('click', () => {
 
