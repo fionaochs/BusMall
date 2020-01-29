@@ -1,15 +1,10 @@
-const myVotes = [
-    { id: 'coffee', votes: 3 },
-    { id: 'banana', votes: 5 },
-    { id: 'desk', votes: 7 },
-    { id: 'chair', votes: 8 },
+const savedResults = JSON.parse(localStorage.getItem('results'));
 
-];
 
 const votes = [];
 const labels = [];
 
-myVotes.forEach(item => {
+savedResults.forEach(item => {
     votes.push(item.votes);
     labels.push(item.id);
 });
@@ -24,7 +19,7 @@ new Chart(ctx, {
         datasets: [{
             label: 'Number of Votes',
             data: votes,
-            backgroundColor: ['lightblue', 'blue', 'yellow', 'green', 'purple', 'orange']
+            backgroundColor: ['lightblue', 'blue', 'yellow', 'green', 'purple', 'orange', 'teal', 'black', 'brown', 'limegreen', 'pink', 'violet', 'red', 'lightblue', 'purple', 'aqua', 'forestgreen', 'salmon', 'magenta', 'brown', 'red']
         }]
     },
     options: {

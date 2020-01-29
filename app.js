@@ -8,7 +8,8 @@ import { renderResults } from './render-results.js';
 const resultsDisplay = document.getElementById('results');
 const submitButton = document.getElementById('submitButton');
 const product3Input = document.getElementById('product3Input');
-
+const chart = document.getElementById('chart');
+const resetButton = document.getElementById('resetButton');
 const products = new ProductsArray(productsData);
 
 
@@ -81,7 +82,6 @@ function renderProductsResults(){
 
     }
     const productSelected = document.querySelector('input:checked');
-    console.log(storageResults);
     let productChoiceResults = findById(storageResults, productSelected.value);
     
     if (!productChoiceResults){
@@ -98,14 +98,6 @@ function renderProductsResults(){
     localStorage.setItem('results', newResultsState);
 
 }
-
-// for (let i = 0; i < results.length; i++){
-    
-    //     const possiblyResults = results[i];
-    //     const selectedGood = findById(resultProducts, possiblyResults.id);
-    //     const dom = renderResults(possiblyResults, selectedGood);
-    //     tbody.appendChild(dom);
-    // }
     
 submitButton.addEventListener('click', () => {
     const results = JSON.parse(localStorage.getItem('results'));
@@ -117,6 +109,8 @@ submitButton.addEventListener('click', () => {
         resultsDisplay.style.visibility = 'visible';
         submitButton.disabled = 'true';
         submitButton.style.visibility = 'hidden';
+        chart.style.visibility = 'visible';
+
 
         for (let i = 0; i < results.length; i++){
             const possiblyResults = results[i];

@@ -1,7 +1,9 @@
-
+body{
+    background-color: aliceblue;
+}
 header{
     text-align: center;
-    font-size: 25px;
+    font-size: 35px;
     font-family: fantasy;
 }
 img{
@@ -17,15 +19,13 @@ section{
 #button{
     display: flex;
     justify-content: center;
-    font-family: fantasy;
-    font-size: 15px;
 }
-/* #results{
+#results{
     text-align: center;
     font-family: fantasy;
-    font-size: 15px;
+    font-size: 25px;
     visibility: hidden;
-} */
+}
 h1{
     text-align: center;
     font-family: fantasy;
@@ -34,4 +34,15 @@ h1{
 canvas {
     width: 75%;
     height: 500px;
+  }
+  #submitButton{
+    font-family: fantasy;
+    font-size: 25px;
+    background-color: teal;
+  }
+  #chart{
+      visibility: hidden;
+  }
+  #resetButton{
+      visibility: hidden;
   }
