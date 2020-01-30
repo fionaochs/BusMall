@@ -44,5 +44,5 @@ canvas {
       visibility: hidden;
   }
   #resetButton{
-      visibility: hidden;
+      /* visibility: hidden; */
   }

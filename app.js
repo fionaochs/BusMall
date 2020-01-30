@@ -110,7 +110,7 @@ submitButton.addEventListener('click', () => {
         submitButton.disabled = 'true';
         submitButton.style.visibility = 'hidden';
         chart.style.visibility = 'visible';
-
+        // resetButton.visibility = 'visible';
 
         for (let i = 0; i < results.length; i++){
             const possiblyResults = results[i];
@@ -124,4 +124,13 @@ submitButton.addEventListener('click', () => {
     }
     
 });
+// resetButton.addEventListener('click', () => {
+//     submitButton.disabled = 'false';
+//     chart.style.visibility = 'hidden';
+//     // resetButton.visibility = 'hidden';
+//     chosenProducts = 0;
+//     localStorage.clear();
+
+
+// });
 
